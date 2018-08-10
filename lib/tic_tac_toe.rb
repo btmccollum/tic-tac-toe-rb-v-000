@@ -27,8 +27,13 @@ def move(board, index, char)
   board[index] = char
 end
 
+<<<<<<< HEAD
 def position_taken?(board, index)
   board[index] != nil && board[index] != " " && board[index] != ""
+=======
+def position_taken?(board, location) 
+  board[location] != " " && board[location] != ""
+>>>>>>> 14929a818b9ac6ded8e36eaf8b41dc89773d3b44
 end
 
 def valid_move?(board, index) 
@@ -91,9 +96,16 @@ def draw?(board)
 end
 
 def over?(board)
-  won?(board) || draw?(board) || full?(board)
+  won?(board) || full?(board)
 end
 
+<<<<<<< HEAD
+=======
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
+
+>>>>>>> 14929a818b9ac6ded8e36eaf8b41dc89773d3b44
 def winner(board)
   if over?(board) && board[won?(board)[0]] == "X" 
    "X"
@@ -105,6 +117,7 @@ def winner(board)
 end
 
 def play(board)
+<<<<<<< HEAD
   until over?(board)
     turn(board)
   end
@@ -114,3 +127,12 @@ def play(board)
     puts "Cat's Game!"
  end
 end
+=======
+ counter = 0
+ while counter <= 8
+    turn(board)
+    counter += 1
+  end
+ play
+end
+>>>>>>> 14929a818b9ac6ded8e36eaf8b41dc89773d3b44
