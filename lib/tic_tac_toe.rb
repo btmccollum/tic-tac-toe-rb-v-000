@@ -1,4 +1,4 @@
-board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]  
+board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 WIN_COMBINATIONS = [
     [0,1,2], #Top row
@@ -6,12 +6,12 @@ WIN_COMBINATIONS = [
     [6,7,8], #Bottom row
     [0,4,8], #Diagonal top left to bottom right
     [2,4,6], #Diagonal top right to bottom left
-    [0,3,6], #Top left to bottom left vertical    
+    [0,3,6], #Top left to bottom left vertical
     [2,5,8], #Top right to bottom right vertical
-    [1,4,7] #Top middle to bottom middle vertical    
+    [1,4,7] #Top middle to bottom middle vertical
     ]
 
-def display_board(board)  
+def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
   puts " #{board[3]} | #{board[4]} | #{board[5]} "
@@ -19,11 +19,11 @@ def display_board(board)
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
 
-def input_to_index(input) 
+def input_to_index(input)
   input.to_i - 1
 end
 
-def move(board, index, char) 
+def move(board, index, char)
   board[index] = char
 end
 
@@ -31,21 +31,21 @@ end
 def position_taken?(board, index)
   board[index] != nil && board[index] != " " && board[index] != ""
 =======
-def position_taken?(board, location) 
+def position_taken?(board, location)
   board[location] != " " && board[location] != ""
 >>>>>>> 14929a818b9ac6ded8e36eaf8b41dc89773d3b44
 end
 
-def valid_move?(board, index) 
+def valid_move?(board, index)
   index.between?(0,8) && !position_taken?(board, index)
 end
 
-def turn(board) 
+def turn(board)
   puts "Please enter 1-9:"
   input = gets.strip
   index = input_to_index(input)
   char = current_player(board)
-    if valid_move?(board, index) 
+    if valid_move?(board, index)
       move(board, index, char)
     else
       turn(board)
@@ -53,7 +53,7 @@ def turn(board)
   display_board(board)
 end
 
-def turn_count(board) 
+def turn_count(board)
   counter = 0
   board.each do |char|
     if char == "X" || char == "O"
@@ -63,8 +63,8 @@ def turn_count(board)
  counter
 end
 
-def current_player(board) 
-  gets = turn_count(board) % 2 == 0 ? "X" : "O"  
+def current_player(board)
+  gets = turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
 def won?(board)
@@ -72,11 +72,11 @@ def won?(board)
     index_1 = win_combination[0]
     index_2 = win_combination[1]
     index_3 = win_combination[2]
-    
+
     position_1 = board[index_1]
     position_2 = board[index_2]
     position_3 = board[index_3]
-    
+
     if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
       win_combination
     else
@@ -86,7 +86,7 @@ def won?(board)
 end
 
 def full?(board)
- board.all? do |value| 
+ board.all? do |value|
    value == "X" || value == "O"
  end
 end
@@ -107,11 +107,11 @@ end
 
 >>>>>>> 14929a818b9ac6ded8e36eaf8b41dc89773d3b44
 def winner(board)
-  if over?(board) && board[won?(board)[0]] == "X" 
+  if over?(board) && board[won?(board)[0]] == "X"
    "X"
   elsif over?(board) && board[won?(board)[0]] == "O"
    "O"
-  else 
+  else
    nil
  end
 end
